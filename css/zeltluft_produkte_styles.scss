@@ -1,0 +1,337 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* --- Start Kopfzeile Mobile --- */
+
+#nav-top {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background-color: #e5d9b6;
+    border-bottom: 2px solid #285430;
+    .logo {
+        padding-left: 10vw;
+        float: left;
+        img {
+            height: 100px;
+            width: auto;
+        }
+    }
+    #nav-top-trigger {
+        display: none;
+        &:checked {
+            ~ .nav-top-trigger {
+                em {
+                    background-color: transparent;
+                    transition: background-color 0.5s;
+                    &::before {
+                        transform: rotate(-135deg);
+                        transition: transform 0.5s;
+                    }
+                    &::after {
+                        transform: rotate(135deg);
+                        transition: transform 0.5s;
+                    }
+                }
+            }
+            ~ .menu {
+                opacity: 1;
+                pointer-events: auto;
+                transition: opacity 0.5s;
+            }
+        }
+    }
+    .nav-top-trigger {
+        float: right;
+        height: 80px;
+        em {
+            display: block;
+            width: 28px;
+            height: 2px;
+            background-color: #333333;
+            margin: 38px 10px;
+            position: relative;
+            transition: background-color 0.5s;
+            &::before, &::after {
+                content: "";
+                display: block;
+                width: 28px;
+                height: 2px;
+                background-color: #333333;
+                position: absolute;
+                left: 0;
+                transition: transform 0.5s;
+            }
+            &::before {
+                transform: translateY(8px);
+            }
+            &::after {
+                transform: translateY(-8px);
+            }
+        }
+    }
+    .menu {
+        z-index: 200;
+        position: absolute;
+        top: 100px;
+        left: 0;
+        right: 0;
+        background-color: #e5d9b6;
+        margin: 0;
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.5s;
+        > li {
+            border-top: 2px solid #285430;
+            &:last-child {
+                border-bottom: 2px solid #285430;
+            }
+            a {
+                display: block;
+                color: #285430;
+                text-align: center;
+                padding: 10px 0;
+                text-decoration: none;
+            }
+        }
+    }
+    .sub-menu {
+        display: none;
+    }
+    .menu,
+    .sub-menu {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        font-size: 1.2rem;
+    }
+}
+
+/* --- Ende Kopfzeile Mobile --- */
+
+/* --- Start Nav Breakpoint Kopfzeile --- */
+
+@media only screen and (min-width: 992px) {
+    #nav-top {
+        .nav-top-trigger {
+            display: none;
+        }
+        .menu {
+            position: static;
+            margin-right: 10vw;
+            float: right;
+            display: block;
+            font-size: 150%;
+            opacity: 1;
+            line-height: 100px;
+            background-color: transparent;
+            overflow: visible;
+            pointer-events: auto;
+            > li {
+                float: left;
+                border-bottom: none;
+                height: 100px;
+                position: relative;
+                padding-left: 30px;
+                border: none;
+                &:last-child {
+                    border: none;
+                }
+            }
+            li {
+                a {
+                    padding: 0;
+                    float: left;
+                    transition: margin-top 0.5s ease;
+                    &:hover {
+                        margin-top: 10px;
+                    }
+                }
+                &:hover .sub-menu{
+                    display: block;
+                }
+            }
+        }
+        .sub-menu {
+            z-index: 100;
+            display: block;
+            position: absolute;
+            top: 100%;
+            font-size: 80%;
+            border-bottom: 2px solid #285430;
+            border-right: 2px solid #285430;
+            border-left: 2px solid #285430;
+            right: -150px;
+            height: 100px;
+            width: 600px;
+            background-color: #e5d9b6;
+            display: none;
+            li {
+                a {
+                    padding-left: 30px;
+                }
+            }
+        }
+    }
+}
+/* --- Ende Nav Breakpoint Kopfzeile --- */
+
+
+/* ----  Start Seitenüberschrift ---- */
+
+.big_ueberschrift {
+    height: 200px;
+    background: url(../img/lukasz-szmigiel-jFCViYFYcus-unsplash.jpg);
+    background-size: cover;
+    background-position: center;
+    .big_text {
+        color: white;
+        font-size: 400%;
+        margin-left: 100px;
+        line-height: 150px;
+        .big_line {
+            font-size: 180%;
+            font-weight: bold;
+            color: #285430;
+        }
+    }
+}
+
+@media only screen and (max-width:992px) {
+    .big_ueberschrift {
+        .big_text {
+            margin-left: 50px;
+        }
+    }
+}
+
+
+/* ----  Ende Seitenüberschrift ---- */
+
+/* ----  Start Produktbeschreibung ---- */
+
+.produkt_beschreibung {
+    background-color: #E5d9b6;
+    border-top: 2px solid #285430;
+    padding: 60px 13%; 
+    h1 {
+        color: #285430;
+        font-size: 200%;
+        font-weight: bolder;
+        text-decoration: underline;
+        padding-bottom: 30px;
+    }
+    p {
+        font-size: 120%;
+    }
+}
+
+/* ----  Ende Produktbeschreibung ---- */
+
+
+/* ----  Start Produktgrid ---- */
+
+
+.grid_produkte {
+    background-color: #E5d9b6;
+    border-bottom: 2px solid #285430;
+    height: 800px;
+    padding: 0px 10%;
+    display: grid;
+    place-items: center;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    .item {
+        width: 400px;
+        height: 300px;
+
+        img {
+            position: absolute;
+            width: 400px;
+            height: 300px;
+
+        }
+        .item_text {
+            opacity: 0;
+            position: absolute;
+            color: white;
+            border: 2px solid #285430;
+            background-color: rgba(95, 141, 78, 0.8);
+            width: 400px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 150%;
+            line-height: 50px;
+            transition: opacity 0.3s linear;
+            &:hover {
+                opacity: 1;
+            }
+
+        }
+    }
+
+}
+
+@media only screen and (max-width:992px) {
+    .grid_produkte {
+        height: 2000px;
+        display: block;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        .item {
+            margin-bottom: 30px;
+            a {
+                text-decoration: none;
+            }
+            .item_text {
+                opacity: 1;
+                height: 70px;
+                font-size: 100%;
+                line-height: 20px;
+                position: relative;
+                top: 230px;
+
+            }
+        }
+    }
+}
+
+/* ----  Ende Produktgrid ---- */
+
+/* ----  Start Fusszeile ---- */
+
+footer {
+    background-color: #E5d9b6;
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+    line-height: 100px;
+    .impressum {
+        >* {
+            float: left;
+            padding-right: 20px;
+            text-decoration: none;
+            color: #285430;
+            font-size: 110%;
+        }
+    }
+    .socialmedia {
+        a {
+            padding-right: 20px;
+            font-size: 180%;
+            color: #285430;
+        }
+    }
+}
+
+
+/* ----  Ende Fusszeile ---- */

@@ -1,0 +1,402 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* --- Start Kopfzeile Mobile --- */
+
+#nav-top {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background-color: #e5d9b6;
+    border-bottom: 2px solid #285430;
+    .logo {
+        padding-left: 10vw;
+        float: left;
+        img {
+            height: 100px;
+            width: auto;
+        }
+    }
+    #nav-top-trigger {
+        display: none;
+        &:checked {
+            ~ .nav-top-trigger {
+                em {
+                    background-color: transparent;
+                    transition: background-color 0.5s;
+                    &::before {
+                        transform: rotate(-135deg);
+                        transition: transform 0.5s;
+                    }
+                    &::after {
+                        transform: rotate(135deg);
+                        transition: transform 0.5s;
+                    }
+                }
+            }
+            ~ .menu {
+                opacity: 1;
+                pointer-events: auto;
+                transition: opacity 0.5s;
+            }
+        }
+    }
+    .nav-top-trigger {
+        float: right;
+        height: 80px;
+        em {
+            display: block;
+            width: 28px;
+            height: 2px;
+            background-color: #333333;
+            margin: 38px 10px;
+            position: relative;
+            transition: background-color 0.5s;
+            &::before, &::after {
+                content: "";
+                display: block;
+                width: 28px;
+                height: 2px;
+                background-color: #333333;
+                position: absolute;
+                left: 0;
+                transition: transform 0.5s;
+            }
+            &::before {
+                transform: translateY(8px);
+            }
+            &::after {
+                transform: translateY(-8px);
+            }
+        }
+    }
+    .menu {
+        z-index: 200;
+        position: absolute;
+        top: 100px;
+        left: 0;
+        right: 0;
+        background-color: #e5d9b6;
+        margin: 0;
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.5s;
+        > li {
+            border-top: 2px solid #285430;
+            &:last-child {
+                border-bottom: 2px solid #285430;
+            }
+            a {
+                display: block;
+                color: #285430;
+                text-align: center;
+                padding: 10px 0;
+                text-decoration: none;
+            }
+        }
+    }
+    .sub-menu {
+        display: none;
+    }
+    .menu,
+    .sub-menu {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        font-size: 1.2rem;
+    }
+}
+
+/* --- Ende Kopfzeile Mobile --- */
+
+/* --- Start Nav Breakpoint Kopfzeile --- */
+
+@media only screen and (min-width: 992px) {
+    #nav-top {
+        .nav-top-trigger {
+            display: none;
+        }
+        .menu {
+            position: static;
+            margin-right: 10vw;
+            float: right;
+            display: block;
+            font-size: 150%;
+            opacity: 1;
+            line-height: 100px;
+            background-color: transparent;
+            overflow: visible;
+            pointer-events: auto;
+            > li {
+                float: left;
+                border-bottom: none;
+                height: 100px;
+                position: relative;
+                padding-left: 30px;
+                border: none;
+                &:last-child {
+                    border: none;
+                }
+            }
+            li {
+                a {
+                    padding: 0;
+                    float: left;
+                    transition: margin-top 0.5s ease;
+                    &:hover {
+                        margin-top: 10px;
+                    }
+                }
+                &:hover .sub-menu{
+                    display: block;
+                }
+            }
+        }
+        .sub-menu {
+            z-index: 100;
+            display: block;
+            position: absolute;
+            top: 100%;
+            font-size: 80%;
+            border-bottom: 2px solid #285430;
+            border-right: 2px solid #285430;
+            border-left: 2px solid #285430;
+            right: -150px;
+            height: 100px;
+            width: 600px;
+            background-color: #e5d9b6;
+            display: none;
+            li {
+                a {
+                    padding-left: 30px;
+                }
+            }
+        }
+    }
+}
+/* --- Ende Nav Breakpoint Kopfzeile --- */
+
+
+/* ----  Start Seitenüberschrift ---- */
+
+.big_ueberschrift {
+    height: 200px;
+    background: url(../img/ZeltLuft_Team.png);
+    background-size: cover;
+    background-position: center;
+    .big_text {
+        color: white;
+        font-size: 400%;
+        margin-left: 100px;
+        line-height: 150px;
+        .big_line {
+            font-size: 180%;
+            font-weight: bold;
+            color: #285430;
+        }
+    }
+}
+
+@media only screen and (max-width:992px) {
+    .big_ueberschrift {
+        .big_text {
+            margin-left: 50px;
+        }
+    }
+}
+
+/* ----  Ende Seitenüberschrift ---- */
+
+/* ----  Start Team Grid ---- */
+
+.team_ueberschrift {
+    padding: 50px 10%;
+    text-align: center;
+    border-top: 2px solid #285430;
+    background-color: #E5d9b6;
+
+    h1 {
+        font-size: 250%;
+        color: #285430;
+        text-decoration: underline;
+        padding-bottom: 30px;
+    }
+    p {
+        font-size: 120%;
+    }
+}
+
+.team_grid {
+    background-color: #E5d9b6;
+    padding: 50px 13%;
+    border-bottom: 2px solid #285430;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 300px);
+    grid-template-areas: 
+    "bild1 text1 text1"
+    "text2 text2 bild2"
+    "bild3 text3 text3"
+    "text4 text4 bild4";
+
+    .team_bild_1 {
+        grid-area: bild1;
+
+        img {
+            width: 400px;
+            height: 300px;
+            border-radius: 10000px;
+        }
+    }
+    .team_text_1 {
+        grid-area: text1;
+        background-color: #a4be7b;
+        margin: 40px;
+        padding: 20px 50px 50px 50px;
+        border: 2px solid #285430;
+        border-radius: 50px;
+        h2,h3 {
+            text-align: center;
+            padding-bottom: 10px;
+        }
+    }
+    .team_bild_2 {
+        grid-area: bild2;
+        img {
+            width: 400px;
+            height: 300px;
+            border-radius: 10000px;
+        }
+    }
+    .team_text_2 {
+        grid-area: text2;
+        background-color: #a4be7b;
+        margin: 40px;
+        padding: 20px 50px 50px 50px;
+        border: 2px solid #285430;
+        border-radius: 50px;
+        h2,h3 {
+            text-align: center;
+            padding-bottom: 10px;
+        }
+    }
+    .team_bild_3 {
+        grid-area: bild3;
+        img {
+            width: 400px;
+            height: 300px;
+            border-radius: 10000px;
+        }
+    }
+    .team_text_3 {
+        grid-area: text3;
+        background-color: #a4be7b;
+        margin: 40px;
+        padding: 20px 50px 50px 50px;
+        border: 2px solid #285430;
+        border-radius: 50px;
+        h2,h3 {
+            text-align: center;
+            padding-bottom: 10px;
+        }
+    }
+    .team_bild_4 {
+        grid-area: bild4;
+        img {
+            width: 400px;
+            height: 300px;
+            border-radius: 10000px;
+        }
+    }
+    .team_text_4 {
+        grid-area: text4;
+        background-color: #a4be7b;
+        margin: 40px;
+        padding: 20px 50px 50px 50px;
+        border: 2px solid #285430;
+        border-radius: 50px;
+        h2,h3 {
+            text-align: center;
+            padding-bottom: 10px;
+        }
+    }
+}
+
+@media only screen and (max-width:992px) {
+    .team_grid {
+        display: block;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 50px 8vw;
+        .team_bild_2 {
+            border-top: 2px solid #285430;
+            padding-top: 20px;
+        }
+        .team_bild_3 {
+            border-top: 2px solid #285430;
+            padding-top: 20px;
+        }
+        .team_bild_4 {
+            border-top: 2px solid #285430;
+            padding-top: 20px;
+        }
+        .team_text_1 {
+            margin: 0;
+            margin-top: 10px;
+            margin-bottom: 50px;
+        }
+        .team_text_2 {
+            margin: 0;
+            margin-top: 10px;
+            margin-bottom: 50px;
+        }
+        .team_text_3 {
+            margin: 0;
+            margin-top: 10px;
+            margin-bottom: 50px;
+        }
+        .team_text_4 {
+            margin: 0;
+            margin-top: 10px;
+            margin-bottom: 50px;
+        }
+    }
+}
+
+/* ----  Ende Team Grid ---- */
+
+/* ----  Start Fusszeile ---- */
+
+footer {
+    background-color: #E5d9b6;
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+    line-height: 100px;
+    .impressum {
+        >* {
+            float: left;
+            padding-right: 20px;
+            text-decoration: none;
+            color: #285430;
+            font-size: 110%;
+        }
+    }
+    .socialmedia {
+        a {
+            padding-right: 20px;
+            font-size: 180%;
+            color: #285430;
+        }
+    }
+}
+
+
+/* ----  Ende Fusszeile ---- */

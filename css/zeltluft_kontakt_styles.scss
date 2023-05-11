@@ -1,0 +1,434 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* --- Start Kopfzeile Mobile --- */
+
+#nav-top {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background-color: #e5d9b6;
+    border-bottom: 2px solid #285430;
+    .logo {
+        padding-left: 10vw;
+        float: left;
+        img {
+            height: 100px;
+            width: auto;
+        }
+    }
+    #nav-top-trigger {
+        display: none;
+        &:checked {
+            ~ .nav-top-trigger {
+                em {
+                    background-color: transparent;
+                    transition: background-color 0.5s;
+                    &::before {
+                        transform: rotate(-135deg);
+                        transition: transform 0.5s;
+                    }
+                    &::after {
+                        transform: rotate(135deg);
+                        transition: transform 0.5s;
+                    }
+                }
+            }
+            ~ .menu {
+                opacity: 1;
+                pointer-events: auto;
+                transition: opacity 0.5s;
+            }
+        }
+    }
+    .nav-top-trigger {
+        float: right;
+        height: 80px;
+        em {
+            display: block;
+            width: 28px;
+            height: 2px;
+            background-color: #333333;
+            margin: 38px 10px;
+            position: relative;
+            transition: background-color 0.5s;
+            &::before, &::after {
+                content: "";
+                display: block;
+                width: 28px;
+                height: 2px;
+                background-color: #333333;
+                position: absolute;
+                left: 0;
+                transition: transform 0.5s;
+            }
+            &::before {
+                transform: translateY(8px);
+            }
+            &::after {
+                transform: translateY(-8px);
+            }
+        }
+    }
+    .menu {
+        z-index: 200;
+        position: absolute;
+        top: 100px;
+        left: 0;
+        right: 0;
+        background-color: #e5d9b6;
+        margin: 0;
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.5s;
+        > li {
+            border-top: 2px solid #285430;
+            &:last-child {
+                border-bottom: 2px solid #285430;
+            }
+            a {
+                display: block;
+                color: #285430;
+                text-align: center;
+                padding: 10px 0;
+                text-decoration: none;
+            }
+        }
+    }
+    .sub-menu {
+        display: none;
+    }
+    .menu,
+    .sub-menu {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        font-size: 1.2rem;
+    }
+}
+
+/* --- Ende Kopfzeile Mobile --- */
+
+/* --- Start Nav Breakpoint Kopfzeile --- */
+
+@media only screen and (min-width: 992px) {
+    #nav-top {
+        .nav-top-trigger {
+            display: none;
+        }
+        .menu {
+            position: static;
+            margin-right: 10vw;
+            float: right;
+            display: block;
+            font-size: 150%;
+            opacity: 1;
+            line-height: 100px;
+            background-color: transparent;
+            overflow: visible;
+            pointer-events: auto;
+            > li {
+                float: left;
+                border-bottom: none;
+                height: 100px;
+                position: relative;
+                padding-left: 30px;
+                border: none;
+                &:last-child {
+                    border: none;
+                }
+            }
+            li {
+                a {
+                    padding: 0;
+                    float: left;
+                    transition: margin-top 0.5s ease;
+                    &:hover {
+                        margin-top: 10px;
+                    }
+                }
+                &:hover .sub-menu{
+                    display: block;
+                }
+            }
+        }
+        .sub-menu {
+            z-index: 100;
+            display: block;
+            position: absolute;
+            top: 100%;
+            font-size: 80%;
+            border-bottom: 2px solid #285430;
+            border-right: 2px solid #285430;
+            border-left: 2px solid #285430;
+            right: -150px;
+            height: 100px;
+            width: 600px;
+            background-color: #e5d9b6;
+            display: none;
+            li {
+                a {
+                    padding-left: 30px;
+                }
+            }
+        }
+    }
+}
+/* --- Ende Nav Breakpoint Kopfzeile --- */
+
+
+/* ----  Start Seitenüberschrift ---- */
+
+.big_ueberschrift {
+    height: 200px;
+    background: url(../img/mathyas-kurmann-fb7yNPbT0l8-unsplash.jpg);
+    background-size: cover;
+    background-position: center;
+    .big_text {
+        color: white;
+        font-size: 400%;
+        margin-left: 100px;
+        line-height: 150px;
+        .big_line {
+            font-size: 180%;
+            font-weight: bold;
+            color: #285430;
+        }
+    }
+}
+
+@media only screen and (max-width:992px) {
+    .big_ueberschrift {
+        .big_text {
+            margin-left: 50px;
+        }
+    }
+}
+
+/* ----  Ende Seitenüberschrift ---- */
+
+/* ----  Start Kontaktformular ---- */
+
+.kontakt_ueberschrift {
+    text-align: center;
+    border-top: 2px solid #285430;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: #285430;
+    background-color: #E5d9b6;
+}
+
+.kontaktformular {
+    background-color: #E5d9b6;
+    border-bottom: 2px solid #285430;
+    padding-bottom: 50px;
+    .form {
+        border: 2px solid #285430;
+        background-color: #a4be7b;
+        margin-left: 25%;
+        margin-right: 25%;
+        padding: 40px;
+        .vorname {
+            width: 45%;
+            height: 30px;
+            margin-right: 50px;
+            font-size: 100%;
+            &:focus {
+                border: 1px solid #285430;
+                background-color: #E5d9b6;
+            }
+        }
+        .nachname {
+            width: 45%;
+            height: 30px;
+            font-size: 100%;
+            &:focus {
+                border: 1px solid #285430;
+                background-color: #E5d9b6;
+            }
+        }
+        .betreff {
+            width: 45%;
+            height: 30px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            margin-right: 50px;
+            font-size: 100%;
+            &:focus {
+                border: 1px solid #285430;
+                background-color: #E5d9b6;
+            }
+        }
+        .mail {
+            width: 45%;
+            height: 30px;
+            font-size: 100%;
+            &:focus {
+                border: 1px solid #285430;
+                background-color: #E5d9b6;
+            }
+        }
+        .anliegen_box {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            .anliegen {
+                width: 70%;
+                height: 200px;
+                text-align: start;
+                font-size: 100%;
+                &:focus {
+                    border: 1px solid #285430;
+                    background-color: #E5d9b6;
+                }
+            }
+        }
+        a {
+            color: black;
+            font-style: italic;
+        }
+        .btn_box {
+            display: flex;
+            justify-content: center;
+            .btn_kontakt {
+                margin-top: 30px;
+                border: 3px solid #285430;
+                background-color: #285430;
+                width: 30%;
+                height: 50px;
+                color: #E5d9b6;
+                font-size: 150%;
+                font-weight: bold;
+                border-radius: 50px;
+                &:hover {
+                    background-color: #5f8d4e;
+                }
+            }
+        }
+
+    }
+}
+
+@media only screen and (max-width:992px) {
+    .kontakt_ueberschrift {
+        padding: 50px 10vw;
+    }
+    .kontaktformular {
+        .form {
+            margin-left: 5vw;
+            margin-right: 5vw;
+            .vorname {
+                margin-bottom: 10px;
+                width: 100%;
+            }
+            .nachname {
+                width: 100%;
+            }
+            .betreff {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            .mail {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+            .anliegen_box {
+                .anliegen {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+/* ----  Ende Kontaktformular ---- */
+
+/* ----  Start Weitere Kontaktmöglichkeiten ---- */
+
+.more_contacts {
+    background-color: #E5d9b6;
+    border-bottom: 2px solid #285430;
+    padding: 50px 15%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    .phone {
+        place-self: center start;
+        h3 {
+            margin-bottom: 20px;
+            font-size: 150%;
+        }
+        p {
+            margin-bottom: 10px;
+            font-size: 120%;
+            span {
+                text-decoration: underline;
+            }
+        }
+    }
+    .maps {
+        h3 {
+            margin-bottom: 10px;
+            font-size: 150%;
+        }
+        p {
+            margin-bottom: 10px;
+            font-size: 120%;
+        }
+    }
+}
+
+@media only screen and (max-width:992px) {
+    .more_contacts {
+        display: block;
+
+        .phone {
+            border-bottom: 2px solid #285430;
+            padding-bottom: 10px;
+        }
+        .maps {
+            padding-top: 10px;
+            iframe {
+                width: 80vw;
+                height: 40vw;
+            }
+        }
+    }
+}
+
+/* ----  Ende Weitere Kontaktmöglichkeiten ---- */
+
+
+/* ----  Start Fusszeile ---- */
+
+footer {
+    background-color: #E5d9b6;
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+    line-height: 100px;
+    .impressum {
+        >* {
+            float: left;
+            padding-right: 20px;
+            text-decoration: none;
+            color: #285430;
+            font-size: 110%;
+        }
+    }
+    .socialmedia {
+        a {
+            padding-right: 20px;
+            font-size: 180%;
+            color: #285430;
+        }
+    }
+}
+
+
+/* ----  Ende Fusszeile ---- */

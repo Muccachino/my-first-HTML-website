@@ -1,0 +1,437 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* --- Start Kopfzeile Mobile --- */
+#nav-top {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background-color: #e5d9b6;
+  border-bottom: 2px solid #285430;
+}
+#nav-top .logo {
+  padding-left: 10vw;
+  float: left;
+}
+#nav-top .logo img {
+  height: 100px;
+  width: auto;
+}
+#nav-top #nav-top-trigger {
+  display: none;
+}
+#nav-top #nav-top-trigger:checked ~ .nav-top-trigger em {
+  background-color: transparent;
+  transition: background-color 0.5s;
+}
+#nav-top #nav-top-trigger:checked ~ .nav-top-trigger em::before {
+  transform: rotate(-135deg);
+  transition: transform 0.5s;
+}
+#nav-top #nav-top-trigger:checked ~ .nav-top-trigger em::after {
+  transform: rotate(135deg);
+  transition: transform 0.5s;
+}
+#nav-top #nav-top-trigger:checked ~ .menu {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.5s;
+}
+#nav-top .nav-top-trigger {
+  float: right;
+  height: 80px;
+}
+#nav-top .nav-top-trigger em {
+  display: block;
+  width: 28px;
+  height: 2px;
+  background-color: #333333;
+  margin: 38px 10px;
+  position: relative;
+  transition: background-color 0.5s;
+}
+#nav-top .nav-top-trigger em::before, #nav-top .nav-top-trigger em::after {
+  content: "";
+  display: block;
+  width: 28px;
+  height: 2px;
+  background-color: #333333;
+  position: absolute;
+  left: 0;
+  transition: transform 0.5s;
+}
+#nav-top .nav-top-trigger em::before {
+  transform: translateY(8px);
+}
+#nav-top .nav-top-trigger em::after {
+  transform: translateY(-8px);
+}
+#nav-top .menu {
+  z-index: 200;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  right: 0;
+  background-color: #e5d9b6;
+  margin: 0;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s;
+}
+#nav-top .menu > li {
+  border-top: 2px solid #285430;
+}
+#nav-top .menu > li:last-child {
+  border-bottom: 2px solid #285430;
+}
+#nav-top .menu > li a {
+  display: block;
+  color: #285430;
+  text-align: center;
+  padding: 10px 0;
+  text-decoration: none;
+}
+#nav-top .sub-menu {
+  display: none;
+}
+#nav-top .menu,
+#nav-top .sub-menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-size: 1.2rem;
+}
+
+/* --- Ende Kopfzeile Mobile --- */
+/* --- Start Nav Breakpoint Kopfzeile --- */
+@media only screen and (min-width: 992px) {
+  #nav-top .nav-top-trigger {
+    display: none;
+  }
+  #nav-top .menu {
+    z-index: 200;
+    position: static;
+    margin-right: 10vw;
+    float: right;
+    display: block;
+    font-size: 150%;
+    opacity: 1;
+    line-height: 100px;
+    background-color: transparent;
+    overflow: visible;
+    pointer-events: auto;
+  }
+  #nav-top .menu > li {
+    float: left;
+    border-bottom: none;
+    height: 100px;
+    position: relative;
+    padding-left: 30px;
+    border: none;
+  }
+  #nav-top .menu > li:last-child {
+    border: none;
+  }
+  #nav-top .menu li a {
+    padding: 0;
+    float: left;
+    transition: margin-top 0.5s ease;
+  }
+  #nav-top .menu li a:hover {
+    margin-top: 10px;
+  }
+  #nav-top .menu li:hover .sub-menu {
+    display: block;
+  }
+  #nav-top .sub-menu {
+    z-index: 200;
+    display: block;
+    position: absolute;
+    top: 100%;
+    font-size: 80%;
+    border-bottom: 2px solid #285430;
+    border-right: 2px solid #285430;
+    border-left: 2px solid #285430;
+    right: -150px;
+    height: 100px;
+    width: 600px;
+    background-color: #e5d9b6;
+    display: none;
+  }
+  #nav-top .sub-menu li a {
+    padding-left: 30px;
+  }
+}
+/* --- Ende Nav Breakpoint Kopfzeile --- */
+/* ----  Start Bildfolge ---- */
+@keyframes reihe1 {
+  0% {
+    z-index: 10;
+  }
+  50% {
+    z-index: 8;
+  }
+  100% {
+    z-index: 8;
+  }
+}
+@keyframes reihe2 {
+  0% {
+    z-index: 8;
+  }
+  50% {
+    z-index: 10;
+  }
+  100% {
+    z-index: 8;
+  }
+}
+@keyframes reihe3 {
+  0% {
+    z-index: 8;
+  }
+  50% {
+    z-index: 8;
+  }
+  100% {
+    z-index: 10;
+  }
+}
+.bildfolge {
+  height: 700px;
+}
+
+.bild {
+  width: 100vw;
+  height: 700px;
+  position: absolute;
+  right: 0px;
+}
+
+.b1 {
+  animation: reihe1 20s infinite linear;
+}
+
+.b2 {
+  animation: reihe2 20s infinite linear;
+}
+
+.b3 {
+  animation: reihe3 20s infinite linear;
+}
+
+.bildfolge_ueberschrift {
+  color: white;
+  z-index: 100;
+  position: absolute;
+  left: 10%;
+  top: 200px;
+  font-size: 300%;
+}
+
+.beide_box {
+  z-index: 100;
+  position: absolute;
+  margin-left: 10%;
+  top: 600px;
+}
+
+.btn_kontakt {
+  z-index: 100;
+  border: 2px solid #E5d9b6;
+  width: 200px;
+  height: 100px;
+  background-color: #5f8d4e;
+  border-radius: 5px;
+  color: antiquewhite;
+  font-size: 150%;
+}
+.btn_kontakt:hover {
+  background-color: rgba(40, 84, 48, 0.7);
+}
+
+.btn_produkte {
+  z-index: 100;
+  margin-left: 30px;
+  border: 2px solid #E5d9b6;
+  width: 200px;
+  height: 100px;
+  background-color: #5f8d4e;
+  border-radius: 5px;
+  color: antiquewhite;
+  font-size: 150%;
+}
+.btn_produkte:hover {
+  background-color: rgba(40, 84, 48, 0.7);
+}
+
+/* ----  Ende Bildfolge ---- */
+/* ----  Start Nachhaltigkeit ---- */
+.nachhaltigkeit {
+  background-color: #E5d9b6;
+  border-top: 2px solid #285430;
+  display: grid;
+  justify-content: space-evenly;
+  justify-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 50px 10%;
+}
+.nachhaltigkeit .nach_box {
+  text-align: center;
+  width: 10vw;
+}
+.nachhaltigkeit .nach_box i {
+  font-size: 350%;
+  color: #285430;
+}
+.nachhaltigkeit .nach_box p {
+  margin-top: 20px;
+  font-size: 120%;
+}
+
+@media only screen and (max-width: 992px) {
+  .nachhaltigkeit {
+    padding: 50px 10%;
+  }
+  .nachhaltigkeit .nach_box p {
+    font-size: 110%;
+  }
+}
+/* ----  Ende Nachhaltigkeit ---- */
+/* ----  Start Beispielprodukte ---- */
+.beispiele {
+  height: 600px;
+  background-color: #E5d9b6;
+  padding-top: 50px;
+  border-top: 2px solid #285430;
+}
+
+.beispiele_ueberschrift {
+  font-size: 200%;
+  color: #285430;
+  text-align: center;
+}
+
+.alle_beispiele {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+.alle_beispiele a {
+  text-decoration: none;
+}
+
+.beispiel_produkt {
+  margin-top: 50px;
+}
+.beispiel_produkt img {
+  height: 280px;
+  width: 350px;
+}
+
+.beschreibung {
+  width: 350px;
+  height: 60px;
+  padding: 5px;
+  background-color: #5f8d4e;
+  text-align: center;
+  color: antiquewhite;
+  font-size: 120%;
+}
+
+@media only screen and (max-width: 992px) {
+  .beispiele {
+    height: 1300px;
+  }
+  .beispiele .alle_beispiele {
+    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .beispiele .alle_beispiele .beispiel_produkt {
+    margin-right: 30px;
+  }
+}
+/* ----  Ende Beispielprodukte ---- */
+/* ----  Start Newsletter ---- */
+.newsletter {
+  border-top: 2px solid #285430;
+  border-bottom: 2px solid #285430;
+  background-color: #E5d9b6;
+  padding: 50px 10vw;
+}
+.newsletter .form {
+  background-color: #a4be7b;
+  border: 3px solid #285430;
+  padding: 30px;
+}
+.newsletter .form h2 {
+  font-size: 180%;
+  color: #285430;
+  margin-bottom: 20px;
+}
+.newsletter .form p {
+  margin: 20px 0;
+}
+.newsletter .form a {
+  color: black;
+  font-style: italic;
+}
+.newsletter .form .mail {
+  margin-top: 20px;
+}
+.newsletter .form .btn_box {
+  display: flex;
+  justify-content: center;
+}
+.newsletter .form .btn_box .btn_news {
+  margin-top: 30px;
+  border: 3px solid #285430;
+  background-color: #285430;
+  width: 30vw;
+  height: 50px;
+  color: #E5d9b6;
+  font-size: 150%;
+  font-weight: bold;
+  border-radius: 50px;
+}
+.newsletter .form .btn_box .btn_news:hover {
+  background-color: #5f8d4e;
+}
+.newsletter input[type=text] {
+  width: 35vw;
+  height: 30px;
+  font-size: 100%;
+  background-color: #E5d9b6;
+}
+
+/* ----  Ende Newsletter ---- */
+/* ----  Start Fusszeile ---- */
+footer {
+  background-color: #E5d9b6;
+  height: 100px;
+  display: flex;
+  justify-content: space-around;
+  line-height: 100px;
+}
+footer .impressum > * {
+  float: left;
+  padding-right: 20px;
+  text-decoration: none;
+  color: #285430;
+  font-size: 110%;
+}
+footer .socialmedia a {
+  padding-right: 20px;
+  font-size: 180%;
+  color: #285430;
+}
+
+/* ----  Ende Fusszeile ---- *//*# sourceMappingURL=zeltluft_index_styles.css.map */
